@@ -1,0 +1,25 @@
+let l31 = [1;3;5;7;8;10;12];;
+let l30 = [4;6;9;11];;
+let l29 = [2];;
+let rec find l x = match l with a::b-> if a = x then true else find b x
+                               |[]->false;;
+let rec f i = if i < 13 then (if (find l31 i) then 31. 
+                                              else (if (find l30 i) then 30.
+                                                                    else 29.))/.(12.) +. (f (i+1))
+                        else 0.;;
+let x1 =f 1;;
+let l31 = [3;5;7;8;10;12];;
+let l30 = [1;4;6;9;11];;
+let l29 = [2];;
+let rec f i = if i < 13 then (if (find l31 i) then 31. 
+                                              else (if (find l30 i) then 30.
+                                                                    else 29.))/.(12.) +. (f (i+1))
+                        else 0.;;
+let x2 =f 1;;
+
+let rec me x = if x<3000 then (if x mod 4 = 0 then (if x mod 100 = 0 then (if x mod 400 = 0 then x1
+                                                                                            else x2)
+                                                                     else x1)
+                                              else x2)/.1000. +. (me (x+1))
+                         else 0.;;
+print_float (me 2000);;
