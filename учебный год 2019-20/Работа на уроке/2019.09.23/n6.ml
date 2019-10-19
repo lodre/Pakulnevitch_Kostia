@@ -1,9 +1,9 @@
 let f = open_out "n6.UTF8";;     
-for i = 224 to 255 do 
-    output_byte f i
+for i = 0x410 to 0x42f do 
+    (output_byte f (192+(i/64));output_byte f (128 + (i mod 64)))
 done;;
    
-for i = 192 to 223 do 
-    output_byte f i
+for i = 0x430 to 0x44f do                                        
+    (output_byte f (192+(i/64));output_byte f (128 + (i mod 64))) 
 done;;
 
