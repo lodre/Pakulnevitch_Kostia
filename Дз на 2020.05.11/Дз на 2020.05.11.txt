@@ -1,0 +1,124 @@
+1. Найдите булевские функции от 2 переменных номер 4, 7, 11, 15
+
+N=4 
+0100
+FTFF
+FF->F
+FT->T
+TF->F
+TT->F
+f=\x.\y.(x F (y T F))
+
+N=7
+0111
+FTTT
+f = \x.\y.(x T (y T F))
+
+N=11
+1011
+TFTT
+f = \x.\y.x T (y F T)
+
+N = 15
+1111
+f = \x.\y.T
+
+2. Найдите булевские функции от 3 переменных номер 19, 220, 171
+
+N=19
+00010011
+FFF->F
+FFT->F
+FTF->F
+FTT->T
+TFF->F
+TFT->F
+TTF->T
+TTT->T
+f = \x.\y.\z.x y (y F (z F T))
+
+N = 220
+11011100
+FFF->T
+FFT->T
+FTF->F
+FTT->T
+TFF->T
+TFT->T
+TTF->F
+TTT->F
+f = \x.\y.\z. x (y F T) (y z T)
+
+N = 171
+10101011
+FFF->T
+FFT->F
+FTF->T
+FTT->F
+TFF->T
+TFT->F
+TTF->T
+TTT->T
+f = \x.\y.\z.x (y T (z F T)) (z F T)
+
+3. Найдите булевские функции от 4 переменных номер 8328, 17721, 999
+
+N = 8328
+0010000010001000
+FFFF->F
+FFFT->F
+FFTF->T
+FFTT->F
+FTFF->F
+FTFT->F
+FTTF->F
+FTTT->F
+TFFF->T
+TFFT->F
+TFTF->F
+TFTT->F
+TTFF->T
+TTFT->F
+TTTF->F
+TTTT->F
+f = \x.\y.\z.\t. x (z F (y F T)) (y F (z (t F T) F))
+
+N = 17721
+0100010100111001
+FFFF->F
+FFFT->T
+FFTF->F
+FFTT->F
+FTFF->F
+FTFT->T
+FTTF->F
+FTTT->T
+TFFF->F
+TFFT->F
+TFTF->T
+TFTT->T
+TTFF->T
+TTFT->F
+TTTF->F
+TTTT->T
+f = \x.\y.\z.\t. x (y (z t (t F T)) z) (y t (z F t))
+
+N = 999
+0000001111100111
+FFFF->F
+FFFT->F
+FFTF->F
+FFTT->F
+FTFF->F
+FTFT->F
+FTTF->T
+FTTT->T
+TFFF->T
+TFFT->T
+TFTF->T
+TFTT->F
+TTFF->F
+TTFT->T
+TTTF->T
+TTTT->T
+f = \x.\y.\z.\t. x (y (z T t) (z (t F T) T)) (y z F)
