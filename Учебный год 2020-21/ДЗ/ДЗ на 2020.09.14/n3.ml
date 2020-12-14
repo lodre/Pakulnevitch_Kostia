@@ -1,4 +1,4 @@
-let f = open_in "n3.txt";;
+let f = open_in "n4.txt";;
                     
 let rec ends c = c = '.'||c = '!'||c = '?';;
 
