@@ -34,5 +34,5 @@ let delete list key =
 
 let iter list fn = List.iter fn !list;;
                                        
-let rec fold list f x = match list with a::b -> fold b f (f a x)
+let rec fold list f x = match !list with a::b -> fold (ref b) f (f a x)
                                        |[]-> x;;
