@@ -14,10 +14,10 @@ let rec add t a = match t with Node (l,r,n) ->if a<n then Node ((add l a),r,n)
 
 
 let sum_tree l r =
-let rec del_max t = match t with Node (t1,t2,n) -> (let x = (if t2 = Leaf then (Leaf,n) else del_max t2) in (Node (t1, fst x, n), snd x))
+let rec del_max t = match t with Node (t1,t2,n) -> (let x = (if t2 = Leaf then (Leaf,n) 
+                                                                          else del_max t2) in (Node (t1, fst x, n), snd x))
                                 | _-> failwith "" in
 Node (l, fst (del_max r), snd (del_max r));; 
-
 let rec delete t a = match t with Node (l,r,n) ->if a<n then Node ((delete l a),r,n)
                                                      else if a>n then Node (l,(delete r a),n)
                                                                  else (if r = Leaf then l
@@ -27,6 +27,13 @@ let rec delete t a = match t with Node (l,r,n) ->if a<n then Node ((delete l a),
 let rec string_of_tree f t = match t with Leaf -> " Leaf"
                                          |Node (l,r,n) -> "("^(string_of_tree f l)^", "^(string_of_tree f r)^", "^(f n)^")"
 
+let verify t = 
+let rec f t i = match t with Leaf -> (i,i)
+                            |Node (t1,t2,x) -> (let (x1,y1) = f t1 (i+1) in let (x2,y2) = f t2 (i+1) in (min x1 x2, max y1 y2)) in
+let (x,y) = f t 0 in
+y-x<2;;
+
+
 let rec print_bool b = print_string (if b then "true\n" else "false\n");;
 
 
@@ -35,9 +42,10 @@ let t = Node (Leaf,Leaf,1);;
 print_bool (mem t 2);;
 let t = add t 2;;     
 print_bool (mem t 2);;
-let t = delete t 2;;
+let t = delete t 2;;   
 print_bool (mem t 2);;
 let t = add t 2;;     
 let t = add t 3;;     
-let t = add t 0;;     
+let t = add t 0;;       
 print_string (string_of_tree string_of_int t);;
+print_bool (verify t);;
