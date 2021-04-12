@@ -13,10 +13,12 @@ def g(n,i):
 	if i<0:
 		return 0
 	elif n == 0:
-		return 1
+		if i == 0:
+			return 1
+		else:
+			return 0
 	else:
 		return g(n-1,i+1)+g(n-1,i-1)
        
 n = int(input())             
-print(g(n,0))
-	
+print(g(2*n,0))    	

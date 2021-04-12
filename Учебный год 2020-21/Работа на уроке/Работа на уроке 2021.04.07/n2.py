@@ -1,31 +1,33 @@
 a = []
-def f(n,k):
-	if a[n][k] == -1:
-		if n<k:
-			return f(n,k-1)
+n = int(input())          
+                          
+def g(x,i):
+	if a[x][i] == -1:
+		if x<2*n:
+			if i<0:
+				a[x][i] = 0
+				return 0        	
+			elif i == 0:
+				a[x][i] = g(x+1,i+1)
+				return g(x+1,i+1)
+			else:
+				y = g(x+1,i+1)+g(x+1,i-1)
+				a[x][i] = y
+				return y
 		else:
-			s = 0
-			for i in range((n // k)+1):
-				s = s + f(n-i*k, k-1)
-			a[n][k] = s
-			return s
+			if i == 0:
+				a[x][i] = 1
+				return 1
+			else:
+				a[x][i] = 0
+				return 0
 	else:
-		return a[n][k]
-
-def main(n):
-	b = []
-	for x in range(n+1):
-		b.append(-1)
-	for x in range(n+1):
-		a.append(b.copy()) 
-	for x in range(n):
-		a[x+1][0] = 0
-	for x in range(n):
-		a[0][x+1] = 1
-	a[0][0] = 1
-	y = f(n,n)
-	return y
-	
-
-n = int(input())
-print(main(n))             
+		return a[x][i]
+         
+b = []                  
+for x in range(2*n+1):
+	b.append(-1)           
+for x in range(2*n+1):
+	a.append(b.copy())
+print(g(0,0))                    
+        
