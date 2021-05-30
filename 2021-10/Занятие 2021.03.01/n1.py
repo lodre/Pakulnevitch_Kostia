@@ -1,4 +1,4 @@
-s = "a|b|[1-9]"
+s = "a|b|[1-9]*"
 pos = 0
 
 def alt():
@@ -14,7 +14,6 @@ def alt():
 
 def concat():
 	global pos
-	print (pos)
 	l = [] 
 	while ((s[pos] != '|') & (s[pos] != ')')):
 		if s[pos] == '(':
@@ -33,7 +32,7 @@ def concat():
 	
 	return ('Concat', l)
 
-def fix(t):
+def fix1(t):
 	s = t[0]
 	l = t[1]
 	if s == 'Alt':
@@ -52,7 +51,26 @@ def fix(t):
 			return t
 	else: 
 		return t
+
+def fix2(t):
+	s = t[0]
+	l = t[1]
+	if s == 'Alt':
+		return (s, list(map(fix2, l)))
+	elif s == 'Concat':
+		for i in range(len(l)):
+			if l[i] == ('Char', '+'):
+				l[i-1] = ('+', l[i-1])
+				l.pop(i)
+			if l[i] == ('Char', '*'):
+				l[i-1] = ('*', l[i-1])
+				l.pop(i)
+		return (s, list(map(fix2, l)))        
+	else:
+		return t
  
+def fix(t):
+	return fix2(fix1(t))
 
 p = alt()
 
