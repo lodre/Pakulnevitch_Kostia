@@ -3,7 +3,6 @@ pos = 0
 
 def alt():
 	global pos
-	print(pos) 
 	l = [concat()]
 	while (s[pos] == '|'):
 		pos = pos+1
@@ -79,9 +78,4 @@ p = fix(p)
 print(p)
 			
 	        
-
-def sum(s):
-	su = 0
-	for c in s:
-		su = su + ord(c)
-	print(chr(su))
+    
