@@ -29,5 +29,4 @@ for x in range(2*n+1):
 	b.append(-1)           
 for x in range(2*n+1):
 	a.append(b.copy())
-print(g(0,0))                    
-        
+print(g(0,0))                            

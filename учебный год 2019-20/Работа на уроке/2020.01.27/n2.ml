@@ -1,4 +1,4 @@
-let n = 2;;           
+let n = 3;;           
 let rec comp1 x l2 = match l2 with a::b->(("("^x^","^a^")"))::(comp1 x b)
                                   |[]->[];;
 let rec comp l1 l2 = match l1 with a::b-> (comp1 a l2)@(comp b l2)

@@ -6,5 +6,5 @@ val mem: ('a,'b) t -> 'a -> bool
 val find: ('a,'b) t -> 'a -> 'b option
 val delete: ('a,'b) t -> 'a -> 'b option
                                                 
-val iter: ('a,'b) t -> (('a,'b) -> unit) -> unit
-val fold: ('a,'b) t -> (('a,'b) -> 'c -> 'c) -> 'c -> 'c
+val iter: ('a,'b) t -> (('a*'b) -> unit) -> unit
+val fold: ('a,'b) t -> (('a*'b) -> 'c -> 'c) -> 'c -> 'c

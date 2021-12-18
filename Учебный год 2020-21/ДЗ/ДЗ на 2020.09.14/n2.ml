@@ -1,12 +1,14 @@
 let f = open_in "n1.txt";;
                     
+let rec ends c = (c = '.'||c = '!'||c = '?');;
+
 let cap c = if ((c>='A' && c<='Z')||(c>='À' && c<='ß')) then 1
                                                         else 0;;
                                                                    
-let rec next1 s i j = if i < String.length s then (if (s.[i]<'A') then (if s.[i] = '.' then next1 s (i+1) 1 else next1 s (i+1) j)
+let rec next1 s i j = if i < String.length s then (if (s.[i]<'A') then (if ends s.[i] then next1 s (i+1) 1 else next1 s (i+1) j)
                                                                   else (i,j))
                                            else (i,j);;
-let rec next s i = if i < String.length s then (if (s.[i]<'A') then (if s.[i] = '.' then next1 s (i+1) 1 else next1 s (i+1) 0)
+let rec next s i = if i < String.length s then (if (s.[i]<'A') then (if ends s.[i] then next1 s (i+1) 1 else next1 s (i+1) 0)
                                                                else next s (i+1))
                                           else (i,0);;
 let rec words_count s i = if i < String.length s then 1 + (words_count s (fst (next s i)))

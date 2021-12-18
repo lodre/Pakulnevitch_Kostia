@@ -3,17 +3,17 @@ l = [10,14,124,2421,12,412,4,32,4,12,3,12,12,533,43,3,2000]
 n = len(l)
 
 for x in range(n):
-	a.append([])
+	a.append(([],0))
 
 def fu(l,n):
 	x = l[n]
-	L = []
+	L = ([],0)
 	while(n<len(l)):
 		if l[n]>x:
-			if len(a[n])>len(L):
+			if a[n][0]>L[0]:
 				L = a[n]
 		n = n+1
-	return [x]+L
+	return ([x]+L[0],L[1]+1)
 	
 
 def f(x):
@@ -22,7 +22,7 @@ def f(x):
 	return y
 
 def main(l):                   
-	a[-1] = [l[-1]]
+	a[-1] = ([l[-1]],1)
 	x = n - 2
 	while x>-1:
 		f(x)
@@ -32,12 +32,12 @@ main(l)
 
 def max():     
 	n = 0
-	L = []
+	L = ([],0)
 	while(n<len(l)):   
-		if len(a[n])>len(L):
-			L = a[n]
+		if a[n][1]>L[1]:
+			L = a[n][0]
 		n = n+1
 	return L
-
             
-print(max())         
+print(a)         
+print(max())

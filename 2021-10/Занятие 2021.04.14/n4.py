@@ -2,12 +2,12 @@ from tkinter import *
 import random
 import math
 root = Tk()
-l = [(100,100,100),(-100,100,100),(0,200,-100)] #coordinates, charge
+l = [(100,100,100),(-100,100,100),(100,-100,100),(-100,-100,100)] #coordinates, charge
 
 g = []
-for i in range(150*len(l)):
-	x = (i/150)*2*math.pi                                    
-	g.append([l[i//150][0]+25*math.sin(x),l[i//150][1]+25*math.cos(x)])
+for i in range(70*len(l)):
+	x = (i/70)*2*math.pi                                    
+	g.append([l[i//70][0]+25*math.sin(x),l[i//70][1]+25*math.cos(x)])
 
 
 c = Canvas(root, width=600, height=600, bg='white')

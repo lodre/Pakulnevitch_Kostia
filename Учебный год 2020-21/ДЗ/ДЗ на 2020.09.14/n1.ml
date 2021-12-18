@@ -13,7 +13,7 @@ let g s = words_count s 0;;
 
 let rec read x = (try
                      let s = input_line f in let y = g s in
-                     (fun a -> (read (x+y)))
-                 with end_of_file->(fun a -> x)) ();;
+                     read (x+y)
+                 with end_of_file->x);;
 let x = read 0;;
 print_int x;;

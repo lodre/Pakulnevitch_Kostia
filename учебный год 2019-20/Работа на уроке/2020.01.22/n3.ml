@@ -1,4 +1,4 @@
-let n = 4;;    
+let n = 80;;    
 let rec map f n x = if n>0 then (f (n,x+1)) + (map f (n-x) x)
                            else if n = 0 then 1
                                          else 0;;

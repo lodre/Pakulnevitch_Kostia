@@ -11,8 +11,8 @@ match prefix with
 | [] -> ()
 | [true] -> print_string "+--"
 | [false] -> print_string "\\--"
-| true::p -> print_string "| " ; print_prefix p
-| false::p -> print_string " " ; print_prefix p;;
+| true::p -> print_string "|   " ; print_prefix p
+| false::p -> print_string "   " ; print_prefix p;;
 
 let print_indent s prefix =
 print_prefix prefix;

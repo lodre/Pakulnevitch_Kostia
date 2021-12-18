@@ -22,6 +22,5 @@ for n in range(15):
 		print(g(n,m))
 
                      
-
 print(f(6,3))
 print(g(6,3))

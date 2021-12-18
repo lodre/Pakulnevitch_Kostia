@@ -3,7 +3,7 @@ let a = Sys.readdir ".";;
 let rec insert l x = match l with (a,b)::c -> if x = a then (a,b+1)::c
                                                        else (a,b)::(insert c x)
                                  |[] -> (x,1)::[];; 
-
+(*
 let rec words s i = if i < String.length s then (if (s.[i]<'A') then ""
                                                                 else (String.make 1 (s.[i]))^(words s (i+1)))
                                            else "";;
@@ -15,7 +15,7 @@ let rec next s i = if i < String.length s then (if (s.[i]<'A') then next1 s (i+1
                                           else i;;
 let rec words_list l s i = if i < String.length s then insert (words_list l s (next s i)) (words s i)
                                                   else l;;      
-
+               
 let rec len f = 
 let rec read1 l = (try
                       let y = input_line f in let x = words_list l y 0 in
@@ -23,6 +23,25 @@ let rec read1 l = (try
                   with end_of_file->(fun a ->l)) () in
 let l = read1 [] in
 List.length l;;
+                 *)
+let rec next1 s i = if i < String.length s then (if (s.[i]<'A') then next1 s (i+1)
+                                                                else i)
+                                           else i;;
+let rec next s i = if i < String.length s then (if (s.[i]<'A') then next1 s (i+1)
+                                                               else next s (i+1))
+                                          else i;;
+let rec words_count s i = if i < String.length s then (words_count s (next s i))+1
+                                                 else 0;;      
+                                  
+let rec len f = 
+let rec read1 s = (try
+                      let y = input_line f in let x = words_count y 0 in
+                      (fun a -> (read1 (x+s)))
+                  with end_of_file->(fun a -> s)) () in
+read1 0;;                        
+
+                                      
+
 
 let suits_us x =
             String.length x >= 4 &&
