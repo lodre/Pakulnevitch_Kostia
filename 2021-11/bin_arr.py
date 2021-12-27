@@ -1,25 +1,20 @@
-n = int(input())
-def root(n):
+def root0(a):
     l = 0
-    r = n
+    r = len(a)-1
     for i in range(1000000):
-        d = (l+r)/2
-        if d*d>n:
+        d = (l+r)//2
+        if a[d]>0:
             r = d
         else:
             l = d
     return l
 
-print(root(n))
-
-
-
-def root(a,n):
+def root(a,x):
     l = 0
     r = len(a)-1
     for i in range(1000000):
         d = (l+r)//2
-        if a[d]>n:
+        if a[d]>x:
             r = d
         else:
             l = d
@@ -28,4 +23,9 @@ def root(a,n):
 a = []
 for i in range(1000):
     a.append((i-20)*(i-20)*(i-20))
-print(root(a,n))
+print("f(x)=0\nx=",end="")
+print(root0(a))
+print("f(x)=",end="")
+y = int(input())
+print("x=",end="")
+print(root(a,y))
