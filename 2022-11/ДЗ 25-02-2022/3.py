@@ -1,10 +1,10 @@
 l = []
 n = int(input())
 count = 0
-for i in range(n):
+for i in range(1,n):
     l.append([])
-    for j in range(i,-1,-1):
-        l[len(l)-1].append([j,j+1])
+    for j in range(i-1,-1,-1):
+        l[len(l)-1].append([j,i])
         count+=1
 
 g = [""]*(2*n+1)
